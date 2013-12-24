@@ -14,11 +14,14 @@ public:
 
   std::string getName () const;
 
+  bool isUpdated () const;
+  void setUpdate (bool is_updated = true);
+
 private:
   unsigned int _entity_id;
   const std::string _name;
 
-  bool _has_changed;
+  bool _is_updated;
 };
 
 #endif /* INCLUDED_COMPONENT_HPP */
