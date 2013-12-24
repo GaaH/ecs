@@ -4,7 +4,7 @@
 #include <set>
 #include <string>
 
-class GameObject;
+#include "GameObject.hpp"
 
 class System
 {
