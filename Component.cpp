@@ -1,8 +1,8 @@
 #include "Component.hpp"
 
-Component::Component (const unsigned int entity_id, const std::string && name) :
+Component::Component (const unsigned int entity_id, const std::string & name) :
   _entity_id(entity_id),
-  _name(std::move(name)),
+  _name(name),
   _has_changed(false)
  {}
 

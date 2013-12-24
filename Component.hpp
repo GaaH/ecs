@@ -6,7 +6,7 @@
 class Component
 {
 public:
-  Component (const unsigned int entity_id, const std::string && name);
+  Component (const unsigned int entity_id, const std::string & name);
   virtual ~Component () = 0;
 
   unsigned int getEntityId () const;
