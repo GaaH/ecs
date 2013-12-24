@@ -39,3 +39,12 @@ Component* GameObject::getComponent (const std::string & name)
   auto it(_components.find(name));
   return it == _components.cend() ? nullptr : it->second;
 }
+
+std::list<std::string> GameObject::getComponentList () const
+{
+  std::list<std::string> res;
+  for (auto e : _components)
+    res.push_back(e.first);
+
+  return res;
+}

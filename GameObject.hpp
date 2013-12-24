@@ -1,6 +1,7 @@
 #ifndef INCLUDED_GAMEOBJECT_HPP
 #define INCLUDED_GAMEOBJECT_HPP
 
+#include <list>
 #include <unordered_map>
 
 #include "Component.hpp"
@@ -16,6 +17,8 @@ public:
   bool addComponent (Component *c);
   bool deleteComponent (const std::string & name);
   Component* getComponent (const std::string & name);
+
+  std::list<std::string> getComponentList () const;
 
 private:
   static unsigned int current_id;

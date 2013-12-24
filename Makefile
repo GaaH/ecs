@@ -1,5 +1,5 @@
 CXX=clang++
-CXXFLAGS=-Wall -Wextra -std=c++11
+CXXFLAGS=-Wall -Wextra -std=c++11 -g
 LDFLAGS=-lsfml-system -lsfml-window -lsfml-graphics
 SRC=$(wildcard *.cpp)
 OBJ=$(SRC:.cpp=.o)
