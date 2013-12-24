@@ -9,7 +9,7 @@ public:
   SystemDescription (const std::string & front = "[[", const std::string & back = "]]");
   virtual ~SystemDescription ();
 
-  virtual void update (Component & c);
+  virtual void update (GameObject & obj);
 
 private:
   std::string _front, _back;

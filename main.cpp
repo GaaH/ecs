@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
   ComponentDescription desc(go.getId());
 
   go.addComponent(&desc);
-  desc_sys.update(desc);
+  desc_sys.update(go);
 
   return 0;
 }

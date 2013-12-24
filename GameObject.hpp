@@ -15,6 +15,7 @@ public:
 
   bool addComponent (Component *c);
   bool deleteComponent (const std::string & name);
+  Component* getComponent (const std::string & name);
 
 private:
   static unsigned int current_id;

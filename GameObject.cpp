@@ -33,3 +33,9 @@ bool GameObject::deleteComponent (const std::string & name)
   _components.erase(it);
   return true;
 }
+
+Component* GameObject::getComponent (const std::string & name)
+{  
+  auto it(_components.find(name));
+  return it == _components.cend() ? nullptr : it->second;
+}
