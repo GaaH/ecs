@@ -5,10 +5,10 @@
 
 #include "Component.hpp"
 
-struct ComponentPosition : public Component
+struct PositionComponent : public Component
 {
-  ComponentPosition (const unsigned int entity_id, const float x = 0.f, const float y = 0.f);
-  virtual ~ComponentPosition ();
+  PositionComponent (const unsigned int entity_id, const float x = 0.f, const float y = 0.f);
+  virtual ~PositionComponent ();
   
   sf::Vector2f position;
 };

@@ -3,11 +3,11 @@
 
 #include "System.hpp"
 
-class SystemMovement : public System
+class MovementSystem : public System
 {
 public:
-  SystemMovement ();
-  virtual ~SystemMovement ();
+  MovementSystem ();
+  virtual ~MovementSystem ();
 
   virtual void update (GameObject & obj);
 };

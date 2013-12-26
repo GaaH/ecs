@@ -5,10 +5,10 @@
 
 #include "Component.hpp"
 
-struct ComponentVelocity : public Component
+struct VelocityComponent : public Component
 {
-  ComponentVelocity (const unsigned int entity_id, const float vel_x = 0.f, const float vel_y = 0.f);
-  virtual ~ComponentVelocity ();
+  VelocityComponent (const unsigned int entity_id, const float vel_x = 0.f, const float vel_y = 0.f);
+  virtual ~VelocityComponent ();
 
   sf::Vector2f velocity;
 };

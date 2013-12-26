@@ -1,20 +1,20 @@
 #include <iostream>
 
 #include "GameObject.hpp"
-#include "ComponentDescription.hpp"
-#include "SystemDescription.hpp"
+#include "DescriptionComponent.hpp"
+#include "DescriptionSystem.hpp"
 
-SystemDescription::SystemDescription () :
+DescriptionSystem::DescriptionSystem () :
   System()
 {}
 
-SystemDescription::~SystemDescription ()
+DescriptionSystem::~DescriptionSystem ()
 {}
 
-void SystemDescription::update (GameObject & obj)
+void DescriptionSystem::update (GameObject & obj)
 {
   std::list<std::string> component_list(obj.getComponentList());
-  ComponentDescription *description(static_cast<ComponentDescription*>(obj.getComponent("Description")));
+  DescriptionComponent *description(static_cast<DescriptionComponent*>(obj.getComponent("Description")));
 
   std::cout << description->getFront() << std::endl;
   for (std::string component_name : component_list)

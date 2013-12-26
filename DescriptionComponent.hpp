@@ -3,11 +3,11 @@
 
 #include "Component.hpp"
 
-class ComponentDescription : public Component
+class DescriptionComponent : public Component
 {
 public:
-  ComponentDescription (const unsigned int entity_id, const std::string & front = "[[", const std::string & back = "]]");
-  ~ComponentDescription ();
+  DescriptionComponent (const unsigned int entity_id, const std::string & front = "[[", const std::string & back = "]]");
+  ~DescriptionComponent ();
 
   void setFront (const std::string & front);
   void setBack (const std::string & back);

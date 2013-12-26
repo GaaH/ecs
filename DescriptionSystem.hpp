@@ -3,11 +3,11 @@
 
 #include "System.hpp"
 
-class SystemDescription : public System
+class DescriptionSystem : public System
 {
 public:
-  SystemDescription ();
-  virtual ~SystemDescription ();
+  DescriptionSystem ();
+  virtual ~DescriptionSystem ();
 
   virtual void update (GameObject & obj);
 

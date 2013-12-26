@@ -2,21 +2,21 @@
 
 #include "GameObject.hpp"
 
-#include "ComponentDescription.hpp"
-#include "ComponentPosition.hpp"
-#include "ComponentVelocity.hpp"
+#include "DescriptionComponent.hpp"
+#include "PositionComponent.hpp"
+#include "VelocityComponent.hpp"
 
-#include "SystemDescription.hpp"
-#include "SystemMovement.hpp"
+#include "DescriptionSystem.hpp"
+#include "MovementSystem.hpp"
 
 int main(int argc, char *argv[])
 {
   GameObject go;
-  SystemDescription desc_sys;
-  SystemMovement move_sys;
-  ComponentDescription desc(go.getId());
-  ComponentPosition pos(go.getId());
-  ComponentVelocity vel(go.getId(), 1.f);
+  DescriptionSystem desc_sys;
+  MovementSystem move_sys;
+  DescriptionComponent desc(go.getId());
+  PositionComponent pos(go.getId());
+  VelocityComponent vel(go.getId(), 1.f);
 
   desc_sys.registerComponent("Description");
   move_sys.registerComponent("Position");
