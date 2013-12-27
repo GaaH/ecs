@@ -12,7 +12,8 @@ RenderSystem::~RenderSystem ()
 
 void RenderSystem::update (GameObject & obj) 
 {
-  DrawableComponent *drawable(static_cast<DrawableComponent*>(obj.getComponent("Drawable")));
+  //DrawableComponent *drawable(static_cast<DrawableComponent*>(obj.getComponent("Drawable")));
+  DrawableComponent *drawable(obj.getComponent<DrawableComponent>("Drawable"));
   PositionComponent *position(static_cast<PositionComponent*>(obj.getComponent("Position")));
 
   sf::Transform tr;

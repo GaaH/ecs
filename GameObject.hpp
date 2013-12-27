@@ -18,6 +18,13 @@ public:
   bool deleteComponent (const std::string & name);
   Component* getComponent (const std::string & name);
 
+  template <typename T>
+  T* getComponent (const std::string & name)
+  {  
+    auto it(_components.find(name));
+    return static_cast<T*>(it == _components.cend() ? nullptr : it->second);
+  }
+
   std::list<std::string> getComponentList () const;
 
 private:

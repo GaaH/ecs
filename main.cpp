@@ -14,8 +14,11 @@
 #include "RenderSystem.hpp"
 #include "CollisionSystem.hpp"
 
+#include "GameWorld.hpp"
+
 int main(int argc, char *argv[])
 {
+  /*
   sf::RenderWindow app(sf::VideoMode(640, 480), "ECS");
   sf::RectangleShape rectangle(sf::Vector2f(50.f, 50.f));
   rectangle.setFillColor(sf::Color::Blue);
@@ -32,7 +35,7 @@ int main(int argc, char *argv[])
 
   DescriptionComponent desc(objects[0].getId());
   PositionComponent pos(objects[0].getId()), pos2(objects[1].getId());
-  VelocityComponent vel(objects[0].getId(), 1.f), vel2(objects[1].getId(), 0.2f);
+  VelocityComponent vel(objects[0].getId(), 1.f), vel2(objects[1].getId(), 0.2f, 0.1f);
   DrawableComponent drawable(objects[0].getId()), drawable2(objects[1].getId());
   CollidableComponent c1(objects[0].getId(), rectangle.getGlobalBounds()), c2(objects[1].getId(), rectangle2.getGlobalBounds());
   drawable.drawable = &rectangle;
@@ -40,6 +43,7 @@ int main(int argc, char *argv[])
 
   //pos.position.y = 50.f;
   pos2.position.x = 250.f;
+  pos2.position.y = 20.f;
 
   desc_sys.registerComponent("Description");
 
@@ -92,7 +96,41 @@ int main(int argc, char *argv[])
 
       app.display();
     }
+*/
 
+  GameWorld world;
+  GameObject *o1(world.addObject());
+  GameObject *o2(world.addObject());
+
+  sf::RectangleShape rectangle1(sf::Vector2f(50.f, 50.f));
+  rectangle1.setFillColor(sf::Color::Blue);
+
+  sf::RectangleShape rectangle2(sf::Vector2f(50.f, 50.f));
+  rectangle2.setFillColor(sf::Color::Red);
+
+  DescriptionComponent desc1(o1->getId()), desc2(o2->getId());
+  PositionComponent pos1(o1->getId()), pos2(o2->getId());
+  //VelocityComponent vel1(objects[0].getId(), 1.f), vel2(objects[1].getId(), 0.2f, 0.1f);
+  DrawableComponent drawable1(o1->getId()), drawable2(o2->getId());
+  //CollidableComponent c1(objects[0].getId(), rectangle.getGlobalBounds()), c2(objects[1].getId(), rectangle2.getGlobalBounds());
+  drawable1.drawable = &rectangle1;
+  drawable2.drawable = &rectangle2;
+
+  pos1.position.x = 50.f;
+  pos2.position = sf::Vector2f(200.f, 150.f);
+
+  o1->addComponent(&desc1);
+  o1->addComponent(&drawable1);
+  o1->addComponent(&pos1);
+
+  o2->addComponent(&desc2);
+  o2->addComponent(&drawable2);
+  o2->addComponent(&pos2);
+
+  while (true)
+    {
+      world.update();
+    }
 
   return 0;
 }
