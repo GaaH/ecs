@@ -18,6 +18,11 @@ public:
   void update ();
   GameObject* addObject ();
 
+  void addSystem (System *sys)
+  {
+    _systems.emplace_back(sys);
+  }
+
 private:
   void initSystems ();
 

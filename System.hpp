@@ -12,6 +12,8 @@ public:
   System ();
   virtual ~System ();
 
+  virtual void begin ();
+  virtual void end ();
   virtual void update (GameObject & obj) = 0;
 
   bool canUpdate (GameObject & obj) const;

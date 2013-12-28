@@ -6,6 +6,12 @@ System::System ()
 System::~System ()
 {}
 
+void System::begin ()
+{}
+
+void System::end ()
+{}
+
 bool System::canUpdate (GameObject & obj) const
 {
   for (std::string component : _registered_components)

@@ -8,11 +8,13 @@
 #include "VelocityComponent.hpp"
 #include "DrawableComponent.hpp"
 #include "CollidableComponent.hpp"
+#include "PhysicComponent.hpp"
 
 #include "DescriptionSystem.hpp"
 #include "MovementSystem.hpp"
 #include "RenderSystem.hpp"
 #include "CollisionSystem.hpp"
+#include "PhysicSystem.hpp"
 
 #include "GameWorld.hpp"
 
@@ -108,11 +110,29 @@ int main(int argc, char *argv[])
   sf::RectangleShape rectangle2(sf::Vector2f(50.f, 50.f));
   rectangle2.setFillColor(sf::Color::Red);
 
+  PhysicSystem *phys_sys(new PhysicSystem);
+  phys_sys->registerComponent("Physic");
+  phys_sys->registerComponent("Position");
+  world.addSystem(phys_sys);
+
+  PhysicComponent phys1(o1->getId(), 50, cpMomentForBox(50, 5, 5)), phys2(o2->getId(), 50, cpMomentForBox(50, 5, 5));
   DescriptionComponent desc1(o1->getId()), desc2(o2->getId());
   PositionComponent pos1(o1->getId()), pos2(o2->getId());
   //VelocityComponent vel1(objects[0].getId(), 1.f), vel2(objects[1].getId(), 0.2f, 0.1f);
   DrawableComponent drawable1(o1->getId()), drawable2(o2->getId());
   //CollidableComponent c1(objects[0].getId(), rectangle.getGlobalBounds()), c2(objects[1].getId(), rectangle2.getGlobalBounds());
+
+  phys1.shape = cpBoxShapeNew(phys1.body, 50.f, 50.f);
+  phys2.shape = cpBoxShapeNew(phys2.body, 50.f, 50.f);
+  cpBodySetPos(phys1.body, cpv(0, 0));
+  cpBodySetPos(phys2.body, cpv(200, 0));
+
+  cpSpaceAddShape(phys_sys->getSpace(), phys1.shape);
+  cpSpaceAddShape(phys_sys->getSpace(), phys2.shape);
+
+  cpSpaceAddBody(phys_sys->getSpace(), phys1.body);
+  cpSpaceAddBody(phys_sys->getSpace(), phys2.body);
+
   drawable1.drawable = &rectangle1;
   drawable2.drawable = &rectangle2;
 
@@ -122,10 +142,12 @@ int main(int argc, char *argv[])
   o1->addComponent(&desc1);
   o1->addComponent(&drawable1);
   o1->addComponent(&pos1);
+  o1->addComponent(&phys1);
 
   o2->addComponent(&desc2);
   o2->addComponent(&drawable2);
   o2->addComponent(&pos2);
+  o2->addComponent(&phys2);
 
   while (true)
     {

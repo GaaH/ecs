@@ -20,6 +20,7 @@ void GameWorld::update ()
 
   for (auto system(_systems.begin()) ; system != _systems.end() ; ++system)
     {
+      (*system)->begin();
       for (auto entity(_entities.begin()) ; entity != _entities.end() ; ++entity)
 	{
 	  if ((*system)->canUpdate(**entity))
@@ -27,6 +28,7 @@ void GameWorld::update ()
 	      (*system)->update(**entity);
 	    }
 	}
+      (*system)->end();
     }
 
   _window.display();
@@ -40,11 +42,12 @@ GameObject* GameWorld::addObject ()
 
 void GameWorld::initSystems ()
 {
+  /*
   _systems.emplace_back(new MovementSystem);
   _systems.back()->registerComponent("Velocity");
   _systems.back()->registerComponent("Position");
-
-  _systems.emplace_back(new DescriptionSystem);
+  */
+  //_systems.emplace_back(new DescriptionSystem);
 
   _systems.emplace_back(new RenderSystem(&_window));
   _systems.back()->registerComponent("Drawable");
